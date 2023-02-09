@@ -32,7 +32,7 @@ mysqlconnection = dbConnect(RMySQL::MySQL(),
                             host='127.0.0.1',
                             port=3306,
                             user='root',
-                            password='Navonod17')
+                            password='')
 ```
 
 ## Inspecting the available tables in the database
