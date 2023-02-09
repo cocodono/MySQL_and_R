@@ -7,6 +7,22 @@ output:
   html_document: default
 ---
 
+## Introduction:
+
+I conducted a survey where I asked people to rate six new movies (released 
+within the last three years). I posted the link the survey on Facebook and 
+Linkedin, and I shared the link with close friends and family over text. I 
+understand that there are biases involved with each way I attempted to solicit
+responses, and for the purposes of gathering data in a timely manner I chose to
+move forward collecting the movie ratings data in this manner. I explained that 
+the data that they provided would be used for an analysis for my Data Management
+and Aquisitions class. The movies I chose were The Menu, The Whale, M3GAN, Black
+Panther: Wakanda Forever, Everything Everywhere All At Once, and Knives Out. I 
+should note that all of the movies were released in 2022 except for Knives Out 
+which was released in 2019. I make this note as this time difference may have
+impacted how respondents rated Knives Out (the movie may not have been fresh in
+their mind).
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -21,8 +37,6 @@ library(reshape2)
 library(ggplot2)
 ```
 
-
-
 ## Establishing the MySQL Connection
 
 ```{r}
@@ -32,7 +46,7 @@ mysqlconnection = dbConnect(RMySQL::MySQL(),
                             host='127.0.0.1',
                             port=3306,
                             user='root',
-                            password='Navonod17')
+                            password='')
 ```
 
 ## Inspecting the available tables in the database
@@ -192,3 +206,19 @@ ggplot(Avg_Diffs, aes(x = Difference, y = Movie_Name, fill = Difference)) +
   labs(title = "The Difference between the Average Ratings for my Survey Compared with IMDb's Ratings",
        y = "Movie Name")
 ```
+
+
+## Conclusions:
+
+Everything Everywhere All At Once was by far the most popular movie amongst the 
+respondents of my survey. Everything Everwhere All At Once was the most highly
+rated movie on average at around 4.2 out of 5, and it was in a three way tie 
+as the most viewed movie with around 68% of respondents having seen the film. 
+When I compared the ratings from my survey to IDMB ratings, I found that
+almost every single movie's average rating from my survey was below the IMDB
+rating, expect for average rating for Everything Everywhere All At Once. Part of
+the reason the movies may have had low average ratings may have been because there
+were so few respondents to my survey compared to the ratings for IMDB. When the 
+number of respondents is lower, the mean is more sensitive to change from outliers.
+If I wanted to recollect this data, I would ensure a larger data collection window
+thereby increasing the chances that I will get a higher amount of responses.
